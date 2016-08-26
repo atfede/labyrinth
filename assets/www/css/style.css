@@ -1,0 +1,265 @@
+@font-face {
+    font-family: bleed;
+    src: url(../css/fonts/TrueType/SFGushingMeadow.ttf);
+}
+@font-face {
+    font-family: yoster;
+    src: url(../css/fonts/yoster/yoster.ttf);
+}
+
+/*html *{font-family: yoster;}*/
+
+/* (o *) */
+body {    
+    /*background-color: #000000;*/
+    margin: 0 !important;
+    padding: 0 !important;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+//para que ocupe toda la pantalla
+/*html, body {
+    width:  100%;
+    height: 100%;
+    margin: 0px;
+}*/
+
+/*#canvasarea { 
+  height: 100vh; 
+  width: 100vw; 
+  display: block;
+}*/
+
+#game{
+    position: absolute;
+    /*    left: 50%;
+        top: 50%;*/
+}
+
+/*#canvasarea{margin-left: auto; margin-right: auto; display: block; border:black 1px solid;} float: left;*/
+#canvasarea{/* border: 1px solid; */ width: 100%; height: 100%; z-index: -10; position: inherit;
+    -webkit-tap-highlight-color: transparent;
+    /* opacity: 0.4; */
+    /*filter: alpha(opacity=40);  For IE8 and earlier ;*/
+}
+
+#buttons{position: relative; z-index: 10;float: right;margin-right: 30px;margin-top: -115px;opacity: 0.7;}
+#button1{margin-right: 15px;}
+
+/*#matriz{float: left;}*/
+/*#view{clear: both;}*/
+#controls{width: 114px;float: left;margin-top: -160px;z-index: 10;position: absolute;margin-left: 30px;opacity: 0.7;}
+#up_arrow{margin-left: 36px; display: block;margin-bottom: -2px;}
+#left_arrow{float: left;margin-right: 20px;}
+#right_arrow{float: left;}
+#down_arrow{margin-left: 35px; margin-top: -6px;}
+
+
+#userMenu{
+    background-image: url("../img/misc/scroll.png");
+    font-family: yoster;
+    /* font-size: 12px; */
+    background-repeat: no-repeat;
+    visibility: hidden;
+    position: absolute;
+    left: 40%;
+    /* top: 75%; */
+    width: 375px;
+    height: 150px; 
+    bottom: 0px;
+    /* margin-top: -150px; */
+}
+
+#userMenuLeft{
+    /* font-size: 25px; */
+    margin-left: -80px;
+    margin-top: 35px;
+    width: auto;
+    float: left;
+}
+#userMenuRight{
+    margin-left: -30px;
+    margin-top: 35px;
+    width: auto;
+    float: left;
+}
+
+.lblUserLeft{margin-left: 60px;}
+.lblUserRight{margin-left: 100px;}
+
+/*.box_rotate {
+  -webkit-transform: rotate(7.5deg);   Chrome, Opera 15+, Safari 3.1+ 
+      -ms-transform: rotate(7.5deg);   IE 9 
+          transform: rotate(7.5deg);   Firefox 16+, IE 10+, Opera 
+}*/
+
+.lblUserMenu{
+    font-size: 20px;
+    /* margin-top: 200px; */
+    /* margin-left: 54px; */
+
+}
+
+
+
+/*buttons*/
+/*input[type="button"] {
+     font-size: 18px; 
+     border: 2px solid #AD235E; 
+    border-radius: 100px;
+    width: auto;
+    height: auto;
+    outline:none}
+
+/*button {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}*/
+/*
+#button1 {
+     margin-bottom: 290px; 
+    width: 72px;
+    height: 72px;
+    background-image: url(../img/button.png);
+    background-repeat: no-repeat;
+}
+#button2 {
+     margin-bottom: 290px; 
+    width: 72px;
+    height: 72px;
+    background-image: url(../img/button.png);
+    background-repeat: no-repeat;
+}*/
+
+#encounter{
+    -ms-transform: rotate(7deg); /* IE 9 */
+    -webkit-transform: rotate(7deg); /* Chrome, Safari, Opera */
+    background-color: rgba(0, 0, 0, 0.5);
+    transform: rotate(-7deg);
+    font-size: 102px;
+    height: 130px;
+    font-family: bleed;
+    font-weight: bold;
+    z-index: 140;
+    color: rgba(119, 0, 0, 1);
+    position: absolute;
+    margin-top: -330px;
+    margin-left: 60px;
+    display: none;
+}
+
+/*fight*/
+#menuFight{
+    visibility: hidden;
+    /* background-color: rgba(6, 6, 6, 0.9); */
+    background-image: url("../img/misc/scroll3.png");
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 300px; /*460px*/
+    height: auto;
+    min-height: 225px;
+    margin-left: 71%;
+    margin-top: -360px;
+    border-radius: 5px;
+    /* float: right; */
+    right: 0px;
+    /* top: 0px; */
+    /* padding: 50px; */
+}
+
+#menuFighting{
+    visibility: hidden;
+    margin-left: 110px;
+    font-family: yoster;
+    font-size: 18px;
+    margin-top: -104px;
+}
+
+.btnTransparent{
+    font-size: 30px;
+    font-family: monospace;
+    color: rgb(50, 5, 5);
+    background-color: Transparent; 
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    font-family: yoster;
+}
+
+.btnHolder1{
+    margin-left: 100px;
+    margin-top: 50px;
+}
+/**/
+
+
+#enemyMenu{
+    background-image: url("../img/misc/scroll.png");
+    font-family: yoster;
+    /* font-size: 12px; */
+    background-repeat: no-repeat;
+    visibility: hidden;
+    position: absolute;
+    left: 40%;
+    top: 0px;
+    width: 375px;
+    height: 150px; 
+    bottom: 0px;
+}
+
+#enemyMenuLeft{
+    /* height: 280px; */
+    
+    margin-top: 30px;
+    margin-left: -60px;
+}
+
+/*.wrap{}*/
+#text{
+    visibility: hidden;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: auto;
+    height: auto;
+     min-height: 110px; 
+    min-width: 336px;
+    position: absolute;
+    margin-top: -360px;
+    margin-left: 3%;
+    padding-left: 15px;
+    padding-right: 15px;
+    /* z-index:  100; */
+    border-radius: 5px;
+    color: rgb(215, 215, 215);
+    font-family: yoster;
+    font-size: 20px;
+    /*resize: vertical;*/
+    /*overflow-y: visible;*/
+    /*white-space: nowrap; overflow: hidden;*/
+}
+
+/*.hideText{
+    width: 0px; height: 2em; white-space: nowrap; overflow: hidden;
+}*/
+
+/*div#text { width: 0px; height: 2em; white-space: nowrap; overflow: hidden; }*/
+
+.pts{color: #e83d3d; font-size: 23px;}
+.enemy{color: #3d61e8; font-size: 23px;}
+.player{color: #6de83d; font-size: 23px;}
+
+#flash{
+    visibility: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #6f0000;
+    /* z-index: -100; */
+    position: absolute;
+    /* margin: 140px; */
+    top: 0;
+}
