@@ -143,10 +143,11 @@ var lab = [
     [1, 1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 0, 1],
     [1, 1, 1, 1, 0, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
     [1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1]];
+    [1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1],
+    [1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]];
 
 //function printLab() {
 //    for (var i = 0; i < lab.length; i++) {
@@ -485,10 +486,10 @@ function move(e) {
     else if (e === 38) {
 
         if (gUp) {
-            if (lab[contY + 1][contX] !== 1) {
+            if (lab[contY + 1][contX] !== 1 && lab[contY + 1][contX] !== 2) { //dejo avanzar para adelante si no es pared o salida
                 contY++;
             }
-            if (lab[contY][contX] !== 1) {
+            if (lab[contY][contX] !== 1 && lab[contY][contX] !== 2) {
                 view.left = lab[contY][contX + 1];
                 view.leftUp = lab[contY + 1][contX + 1];
                 view.front = lab[contY + 1][contX];
@@ -517,7 +518,7 @@ function move(e) {
             }
         }
         else if (gLeft) {
-            if (lab[contY][contX + 1] !== 1) {
+            if (lab[contY][contX + 1] !== 1 && lab[contY][contX + 1] !== 2) {
                 contX++;
 
                 view.left = lab[contY - 1][contX];
@@ -548,7 +549,7 @@ function move(e) {
             }
         }
         else if (gRight) {
-            if (lab[contY][contX - 1] !== 1) {
+            if (lab[contY][contX - 1] !== 1 && lab[contY][contX - 1] !== 2) {
                 contX--;
 
                 view.left = lab[contY + 1][contX];
@@ -579,11 +580,11 @@ function move(e) {
             }
         }
         if (gDown) {
-            if (lab[contY - 1][contX] !== 1) {
+            if (lab[contY - 1][contX] !== 1 && lab[contY - 1][contX] !== 2) {
                 contY--;
             }
 
-            if (lab[contY][contX] !== 1) {
+            if (lab[contY][contX] !== 1 && lab[contY][contX] !== 2) {
                 view.left = lab[contY][contX - 1];
                 view.leftUp = lab[contY - 1][contX - 1];
                 view.front = lab[contY - 1][contX];
@@ -620,7 +621,7 @@ function move(e) {
     if (e === 40) {
         if (gUp) {
 
-            if (lab[contY - 1][contX] !== 1) {
+            if (lab[contY - 1][contX] !== 1 && lab[contY - 1][contX] !== 2) {
                 contY--;
             }
             if (contY >= 1) {
@@ -651,7 +652,7 @@ function move(e) {
             }
         }
         else if (gLeft) {
-            if (lab[contY][contX - 1] !== 1) {
+            if (lab[contY][contX - 1] !== 1 && lab[contY][contX - 1] !== 2) {
                 contX--;
 
                 view.left = lab[contY - 1][contX];
@@ -683,7 +684,7 @@ function move(e) {
         }
         //check
         else if (gRight) {
-            if (lab[contY][contX + 1] !== 1) {
+            if (lab[contY][contX + 1] !== 1 && lab[contY][contX + 1] !== 2) {
                 contX++;
 
                 view.left = lab[contY + 1][contX];
@@ -713,10 +714,10 @@ function move(e) {
                 printLab2(leftY, leftupY, frontY, rightupY, rightY, leftX, leftupX, frontX, rightX, rightupX);
             }
         }
-        //check
+
         else if (gDown) {
 
-            if (lab[contY + 1][contX] !== 1) {
+            if (lab[contY + 1][contX] !== 1 && lab[contY + 1][contX] !== 2) {
                 contY++;
 
                 view.left = lab[contY][contX - 1];
@@ -825,6 +826,7 @@ function printLab2(leftY, leftupY, frontY, rightupY, rightY, leftX, leftupX, fro
 //        }
 //        $("#matriz").css("font-size", "14px"); //fer 14px
 //    }
+
     setCanvas(leftY, leftupY, frontY, rightupY, rightY, leftX, leftupX, frontX, rightX, rightupX);
 }
 
@@ -850,7 +852,8 @@ function setCanvas(leftY, leftupY, frontY, rightupY, rightY, leftX, leftupX, fro
         if (typeof leftY !== "undefined" && typeof leftupY !== "undefined" && typeof frontY !== "undefined" && typeof frontX !== "undefined" &&
                 typeof rightY !== "undefined" && typeof rightupX !== "undefined") {
 
-//            blurFX(canvas);
+            //pestaneo
+            //blurFX(canvas);
 
             if (lab[leftY][leftX] === 0 && lab[leftupY][leftupX] === 1 && lab[frontY][frontX] === 1 && lab[rightupY][rightupX] === 1 && lab[rightY][rightX] === 0) {
                 draw_wall_front(ctx);
@@ -954,9 +957,18 @@ function setCanvas(leftY, leftupY, frontY, rightupY, rightY, leftX, leftupX, fro
 //                draw_cross_paths_next(ctx); //xx
                 flag_CrossPaths = false;
             }
+
+            //exit
             else if(lab[leftY][leftX] === 1 && lab[leftupY][leftupX] === 1 && lab[frontY][frontX] === 2 && lab[rightupY][rightupX] === 1 && lab[rightY][rightX] === 1){
                 draw_exit(ctx);
             }
+            else if(lab[leftY][leftX] === 0 && lab[leftupY][leftupX] === 1 && lab[frontY][frontX] === 1 && lab[rightupY][rightupX] === 1 && lab[rightY][rightX] === 2){
+                draw_wall_front(ctx);
+            }
+            else if(lab[leftY][leftX] === 2 && lab[leftupY][leftupX] === 1 && lab[frontY][frontX] === 1 && lab[rightupY][rightupX] === 1 && lab[rightY][rightX] === 0){
+                draw_wall_front(ctx);
+            }
+            //exit
         }
     }
 }
@@ -1460,7 +1472,7 @@ function preloadScenery() {
 function blurFX() {
     var n = 0;
     var id = setInterval(function () {
-        $("#canvasarea").css("opacity", " " + n + " ");
+        $("#canvasarea").css("opacity", n);
         n += 0.1;
         if (n === 0.8) {
             clearInterval(id);
