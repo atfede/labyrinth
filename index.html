@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Labyrinth</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />-->
+        <link href="css/style.css" rel="stylesheet"/>
+        <!--<script type="text/javascript" charset="utf-8" src="js/cordova.js"></script>-->
+        <script type="text/javascript" src="js/libs/jquery/jquery.js"></script>
+        <script type="text/javascript" src="js/jscript.js"></script>
+        <script type="text/javascript" src="js/character.js"></script>
+        <script type="text/javascript" src="js/fastbutton/jquery.google.fastbutton.js"></script>
+        <!--<script type="text/javascript" src="js/fastbutton/xui.google.fastbutton.js"></script>-->
+        <script type="text/javascript" src="js/fastbutton/google.fastbutton.js"></script>
+
+        <!--<script type="text/javascript" src="js/character.js"></script>-->
+        <script>//https://github.com/kripken/emscripten/issues/2053
+            window.onload = function () {
+                // // ensure correct 4:3 aspect ratio (height 480 instead of 400) and increase size if browser view port is large enough
+                // var cs = document.createElement("Style");
+                // cs.appendChild(document.createTextNode(window.innerHeight < 850 ? "#canvas { width: 640px; height: 480px }" : "#canvas { width: 800px; height: 600px }"));
+                // document.head.appendChild(cs);
+                // ensure correct full screen size and aspect ratio
+                var canEl = document.getElementById("canvasarea");
+                var reqFuncName = (canEl.mozRequestFullScreen || canEl.webkitRequestFullScreen || {"name": "requestFullScreen"}).name;
+                document.addEventListener(reqFuncName.slice(0, -"requestFullScreen".length) + "fullscreenchange", function (evt) {
+                    if (document.mozFullScreen || document.webkitIsFullScreen || document.fullScreen || document.isFullScreen) {
+                        var w = canEl.clientWidth;
+                        var h = canEl.clientHeight;
+                        var factor = Math.min(screen.width / w, screen.height / h);
+                        canEl.setAttribute("style", "width: " + Math.round(w * factor) + "px !important; height: " + Math.round(h * factor) + "px !important;");
+                    } else {
+                        canEl.removeAttribute("style");
+                    }
+                }, false);
+                // in Firefox full screen must be set to the parent of the canvas to allow resizing the canvas for correct aspect ratio
+                if (reqFuncName === "mozRequestFullScreen") {
+                    canEl[reqFuncName] = function () {
+                        this.parentNode[reqFuncName].apply(this.parentNode, arguments);
+                    };
+                }
+            };</script>
+    </head>
+    <body onload="printLab2(1, 2, 2, 2, 1, 2, 2, 1, 0, 0)">
+
+    <!--matriz numeros-->
+    <!--<div id="matriz"></div><p>-->
+
+        <div id="flash"></div>
+        <canvas id="canvasarea" width="800" height="480"></canvas>
+        <div id="encounter">ENCOUNTER!</div>
+        <div id="text"></div>
+
+                      <div id="controls">
+                            <img src="img/up_arrow_l.png" alt="up" id="up_arrow">
+                            <img src="img/left_arrow_l.png" alt="left" id="left_arrow">
+                            <img src="img/right_arrow_l.png" alt="right" id="right_arrow">
+                            <img src="img/down_arrow_l.png" alt="down" id="down_arrow">
+                        </div>
+
+                        <!--botones de la derecha-->
+                        <!--<div id="buttons">-->
+                            <!--<img src="img/button.png" alt="b1" id="button1">-->
+                            <!--<img src="img/button.png" alt="b2" id="button2">-->
+                        <!--</div>-->
+
+
+        <div id="userMenu">
+            <div id="userMenuLeft">
+                <label id="name" class="lblUserMenu lblUserRight"></label><br>
+                <label id="type" class="lblUserMenu lblUserRight"></label><br>
+                <label id="life" class="lblUserMenu lblUserRight"></label><br>
+                <label id="xp" class="lblUserMenu lblUserRight"></label>
+            </div>
+            <div id="userMenuRight">
+                <label id="weapon" class="lblUserMenu lblUserLeft"></label><br>
+                <label id="equip" class="lblUserMenu lblUserLeft"></label><br>
+                <label id="view" class="lblUserMenu lblUserLeft"></label>
+            </div>
+        </div>
+        <div id="enemyMenu">
+            <div id="enemyMenuLeft">
+                <label id="eName" class="lblUserMenu lblUserRight"></label><br>
+                <label id="eType" class="lblUserMenu lblUserRight"></label><br>
+                <label id="eLife" class="lblUserMenu lblUserRight"></label><br>
+                <label id="eWeapon" class="lblUserMenu lblUserRight"></label><br>
+            </div>
+            <!--
+            <div id="enemyMenuRight">
+                <label id="weapon" class="lblUserMenu lblUserLeft"></label><br>
+                <label id="use" class="lblUserMenu lblUserLeft"></label><br>
+                <label id="view" class="lblUserMenu lblUserLeft"></label>
+                </div>
+                -->
+        </div>
+        <div id="menuFight">
+            <div class="btnHolder1">
+                <input type="button" id="btnFight" class="btnTransparent" value="Fight"><br><br>
+                <input type="button" id="btnRun" class="btnTransparent" value="Run">
+            </div>
+            <div id="menuFighting">
+                <input type="button" id="btnAttack" class="btnTransparent" value="Attack"><br><br>
+                <input type="button" id="btnBlock" class="btnTransparent" value="Block"><br><br>
+                <input type="button" id="btnCast" class="btnTransparent" value="Cast">
+            </div>
+        </div>
+
+        <!--       <div id="view"></div>
+                <div id="dirControl">
+                    <table id="tControl" border="1">
+                        <tr>
+                            <td id="tRight"></td>
+                            <td id="tActual"></td>
+                            <td id="tLeft"></td>
+                        </tr>
+                        <tr>
+                            <td id="tRightUp"></td>
+                            <td id="tFront"></td>
+                            <td id="tLeftUp"></td>
+                        </tr>
+                    </table>
+                </div>-->
+
+        <!--        <script>
+                    document.addEventListener("deviceready", playAudio(), false);
+        
+        
+                    function playAudio(){
+                        console.log(device.cordova);
+                    }
+                    
+                    function playAudio() {
+        //                var dn = device.name;
+                        alert('japi');
+                        
+                        if (device.platform === 'Android') {
+                            var src = 'ironbound.mp3';
+                            src = '/android_asset/www/sounds/' + src;
+        //                    alert("device model: " + device.model + " device cordova: " + device.cordova);
+                            alert(src);
+                        }
+        
+                        var media = new Media(src, success, error_error);
+                        media.play();
+                    }
+        
+                    function success() {
+                        alert('succes motherfucker!');
+                    }
+        
+                    function error_error(e) {
+                        alert('great error');
+                        alert(e.message);
+                    }
+                </script>-->
+
+        <script type='text/javascript' src='js/gamecontroller/gamecontroller.js'></script>
+<!--        <script type='text/javascript'>
+        $(function () { // jQuery *not* required - just be to call onload
+//            var options = GameController.touchableAreas;
+            GameController.init();
+        });
+        </script>-->
+    </body>
+</html>
