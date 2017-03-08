@@ -987,7 +987,7 @@ function draw_wall_front(ctx) {
 var startGame = true;
 function draw_corridor(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor.png';
+    img.src = 'assets/www/img/lab/corridor.png';
     img.width = 800;
     img.height = 480;
     if (startGame) {
@@ -1003,7 +1003,7 @@ function draw_corridor(ctx) {
 
 function draw_corridor_2(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor.png';
+    img.src = 'assets/www/img/lab/corridor.png';
     img.width = 800;
     img.height = 480;
 
@@ -1021,7 +1021,7 @@ function draw_corridor_2(ctx) {
 //hidden
 function draw_corridor_3(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor.png';
+    img.src = 'assets/www/img/lab/corridor.png';
     img.width = 800;
     img.height = 480;
 
@@ -1032,7 +1032,7 @@ function draw_corridor_3(ctx) {
 
 function draw_wall_turn_left(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor_turn_left.png';
+    img.src = 'assets/www/img/lab/corridor_turn_left.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1042,7 +1042,7 @@ function draw_wall_turn_left(ctx) {
 
 function draw_corner_to_left(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor_end_turn_left_2.png';
+    img.src = 'assets/www/img/lab/corridor_end_turn_left_2.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1052,7 +1052,7 @@ function draw_corner_to_left(ctx) {
 
 function draw_wall_turn_right(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor_turn_right.png';
+    img.src = 'assets/www/img/lab/corridor_turn_right.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1062,7 +1062,7 @@ function draw_wall_turn_right(ctx) {
 
 function draw_corner_to_right(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor_end_turn_right_2.png';
+    img.src = 'assets/www/img/lab/corridor_end_turn_right_2.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1072,7 +1072,7 @@ function draw_corner_to_right(ctx) {
 
 function draw_wall_turn_left_with_corridor(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor_with_left_turn.png';
+    img.src = 'assets/www/img/lab/corridor_with_left_turn.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1082,7 +1082,7 @@ function draw_wall_turn_left_with_corridor(ctx) {
 
 function draw_wall_turn_right_with_corridor(ctx) {
     var img = new Image();
-    img.src = 'img/lab/corridor_with_right_turn.png';
+    img.src = 'assets/www/img/lab/corridor_with_right_turn.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1092,7 +1092,7 @@ function draw_wall_turn_right_with_corridor(ctx) {
 
 function draw_wall_end(ctx) {
     var img = new Image();
-    img.src = 'img/lab/wall_end.png';
+    img.src = 'assets/www/img/lab/wall_end.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1103,7 +1103,7 @@ function draw_wall_end(ctx) {
 //xx
 function draw_wall_walk_both_sides(ctx) {
     var img = new Image();
-    img.src = 'img/lab/wall_front_no_sides_1.png';
+    img.src = 'assets/www/img/lab/wall_front_no_sides_1.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1113,7 +1113,7 @@ function draw_wall_walk_both_sides(ctx) {
 
 function draw_cross_paths(ctx) {
     var img = new Image();
-    img.src = 'img/lab/cross_paths.png';
+    img.src = 'assets/www/img/lab/cross_paths.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1123,7 +1123,7 @@ function draw_cross_paths(ctx) {
 
 function draw_cross_paths_next(ctx) {
     var img = new Image();
-    img.src = 'img/lab/cross_paths_next.png';
+    img.src = 'assets/www/img/lab/cross_paths_next.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1133,7 +1133,7 @@ function draw_cross_paths_next(ctx) {
 
 function draw_cross_paths_next_2(ctx) {
     var img = new Image();
-    img.src = 'img/lab/cross_paths_next.png';
+    img.src = 'assets/www/img/lab/cross_paths_next.png';
     img.width = 800;
     img.height = 480;
 //    img.onload = function () {
@@ -1150,7 +1150,7 @@ function draw_cross_paths_next_2(ctx) {
 
 function draw_exit(ctx) {
     var img = new Image();
-    img.src = 'img/lab/wall_end_exit.png';
+    img.src = 'assets/www/img/lab/wall_end_exit.png';
     img.width = 800;
     img.height = 480;
     //img.onload = function () {
@@ -1183,7 +1183,7 @@ function getVersus() {
 
         var ctx = document.getElementById('canvasarea').getContext('2d');
         var img = new Image();
-        img.src = 'img/enemy/enemy1.png';
+        img.src = 'assets/www/img/enemy/enemy1.png';
         img.sx = 0;
         img.sy = 0;
         img.swidth = 170;
@@ -1216,7 +1216,7 @@ function getVersus() {
 
         var ctx = document.getElementById('canvasarea').getContext('2d');
         var img = new Image();
-        img.src = 'img/enemy/magahielo3.png';
+        img.src = 'assets/www/img/enemy/magahielo3.png';
         img.sx = 0;
         img.sy = 0;
         img.swidth = 228; //223
@@ -1250,7 +1250,7 @@ function getVersus() {
 
         var ctx = document.getElementById('canvasarea').getContext('2d');
         var img = new Image();
-        img.src = 'img/enemy/werewolf2.png';
+        img.src = 'assets/www/img/enemy/werewolf2.png';
         img.sx = 0;
         img.sy = 0;
         img.swidth = 260;
